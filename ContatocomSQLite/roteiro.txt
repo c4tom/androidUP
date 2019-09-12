@@ -1,0 +1,196 @@
+1) Criar projeto
+
+2) Criar classe Contato
+
+    private Integer id;
+    private String nome;
+    private String sexo;
+    private String endereco;
+    private String dataNascimento;
+    private String cpf;
+    private String dataCadastro;
+    private String telefone;
+    private String email;
+    private String empresa;
+	
+	- Gerar Get e Set
+
+2) Classe Conexao extendendo SQLiteOpenHelper
+
+	- 
+	
+	private static SQLiteDatabase conn;
+
+    public static SQLiteDatabase getConexao() {
+        return conn;
+    }
+
+    public Conexao(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+        conn = getWritableDatabase();
+    }
+	
+	
+	- Implementar Oncreate e OnUpgrade
+		em Oncreate adicionar
+		
+      db.execSQL("CREATE TABLE CONTATO (" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "NOME VARCHAR(80) NOT NULL, " +
+                "ENDERECO VARCHAR(120), " +
+                "CPF VARCHAR(15), " +
+                "DATA_NASCIMENTO TIMESTAMP, " +
+                "DATA_CADASTRO TIMESTAMP NOT NULL, " +
+                "TELEFONE VARCHAR(13), " +
+                "EMAIL VARCHAR(50), " +
+                "EMPRESA VARCHAR(70), " +
+                "SEXO VARCHAR(20))");
+	
+
+3) Classe ContatoDao
+
+	    public  void salvar(Contato contato) {
+        ContentValues values = new ContentValues();
+        values.put("data_cadastro", new Date().toString());
+        values.put("nome", contato.getNome());
+        values.put("sexo", contato.getSexo());
+        values.put("endereco", contato.getEndereco());
+        values.put("data_nascimento", contato.getDataNascimento());
+        values.put("cpf", contato.getCpf());
+        values.put("telefone", contato.getTelefone());
+        values.put("empresa", contato.getEmpresa());
+        values.put("email", contato.getEmail());
+
+        SQLiteDatabase conn = Conexao.getConexao();
+        conn.insert("contato", null, values);
+		}
+		
+
+4) Metodo para o evento salvar
+
+    public void salvarContato(View view) {
+        EditText txtNome = findViewById(R.id.txtNome);
+        EditText txtEndereco = findViewById(R.id.txtEndereco);
+        EditText txtTelefone = findViewById(R.id.txtTelefone);
+        EditText txtDataNascimento = findViewById(R.id.txtDataNascimento);
+        EditText txtCpf = findViewById(R.id.txtCPF);
+        EditText txtEmpresa = findViewById(R.id.txtEmpresa);
+        EditText txtEmail = findViewById(R.id.txtEmail);
+
+        Contato contato = new Contato();
+        contato.setDataCadastro(new Date().toString());
+        contato.setNome(txtNome.getText().toString());
+        contato.setEndereco(txtEndereco.getText().toString());
+        contato.setTelefone(txtTelefone.getText().toString());
+        contato.setDataNascimento(txtDataNascimento.getText().toString());
+        contato.setCpf(txtCpf.getText().toString());
+        contato.setEmpresa(txtEmpresa.getText().toString());
+        contato.setEmail(txtEmail.getText().toString());
+
+        // Salva no BD
+        new ContatoDao().salvar(contato);
+
+        // Mensagem global após salvar no banco
+        Toast.makeText(getApplicationContext(),"Contato Salvo com Sucesso!!!", Toast.LENGTH_LONG).show();
+    }
+	
+	
+	
+5) no Oncreate, conectar ao banco em MainActivity
+
+        // conectar ao banco no inicio
+        new Conexao(getApplicationContext(), "contato.db", null, 1);
+		
+		
+		
+		
+6) Criar os campos do formulario e botao
+
+ 
+ 
+    <EditText
+        android:id="@+id/txtNome"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nome"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/txtCPF"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="CPF"
+        app:layout_constraintTop_toBottomOf="@+id/txtNome"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Email"
+        app:layout_constraintTop_toBottomOf="@+id/txtCPF"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/txtEndereco"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Endereço"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/txtTelefone"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Telefone"
+        app:layout_constraintTop_toBottomOf="@+id/txtEndereco"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/txtEmpresa"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Empresa"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefone"
+        tools:layout_editor_absoluteX="2dp" />
+
+    <EditText
+        android:id="@+id/txtDataNascimento"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Data de Nascimento"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmpresa"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:onClick="salvarContato"
+        android:text="Salvar"
+        app:layout_constraintTop_toBottomOf="@+id/txtDataNascimento"
+        tools:layout_editor_absoluteX="151dp" />
