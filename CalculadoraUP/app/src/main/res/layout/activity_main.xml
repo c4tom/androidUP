@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textResultado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:foreground="@android:color/holo_blue_bright"
+        android:text="TextView"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botao7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clicar"
+        android:text="7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textResultado" />
+
+    <Button
+        android:id="@+id/botao8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clicar"
+        android:text="8"
+        app:layout_constraintStart_toEndOf="@+id/botao7"
+        app:layout_constraintTop_toBottomOf="@+id/textResultado"
+        tools:text="8" />
+
+    <Button
+        android:id="@+id/botao9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clicar"
+        android:text="9"
+        app:layout_constraintStart_toEndOf="@+id/botao8"
+        app:layout_constraintTop_toBottomOf="@+id/textResultado" />
+
+    <Button
+        android:id="@+id/botao4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="35dp"
+        android:onClick="clicar"
+        android:text="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao7" />
+
+    <Button
+        android:id="@+id/botao1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="36dp"
+        android:onClick="clicar"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao4" />
+
+    <Button
+        android:id="@+id/botao5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="35dp"
+        android:onClick="clicar"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@+id/botao4"
+        app:layout_constraintTop_toBottomOf="@+id/botao8" />
+
+    <Button
+        android:id="@+id/botao6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:onClick="clicar"
+        android:text="6"
+        app:layout_constraintStart_toEndOf="@+id/botao5"
+        app:layout_constraintTop_toBottomOf="@+id/botao9" />
+
+    <Button
+        android:id="@+id/botao2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="36dp"
+        android:onClick="clicar"
+        android:text="2"
+        app:layout_constraintStart_toEndOf="@+id/botao1"
+        app:layout_constraintTop_toBottomOf="@+id/botao5" />
+
+    <Button
+        android:id="@+id/botao3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="36dp"
+        android:onClick="clicar"
+        android:text="3"
+        app:layout_constraintStart_toEndOf="@+id/botao2"
+        app:layout_constraintTop_toBottomOf="@+id/botao6" />
+
+    <Button
+        android:id="@+id/botaoSoma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clicar"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@+id/botao9"
+        app:layout_constraintTop_toBottomOf="@+id/textResultado" />
+
+    <Button
+        android:id="@+id/botaoSubtracao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:onClick="clicar"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@+id/botao6"
+        app:layout_constraintTop_toBottomOf="@+id/botaoSoma" />
+
+    <Button
+        android:id="@+id/botaoMultiplica"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="36dp"
+        android:onClick="clicar"
+        android:text="*"
+        app:layout_constraintStart_toEndOf="@+id/botao3"
+        app:layout_constraintTop_toBottomOf="@+id/botaoSubtracao" />
+
+    <Button
+        android:id="@+id/botaoDivisao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:onClick="clicar"
+        android:text="/"
+        app:layout_constraintStart_toEndOf="@+id/botaoIgual"
+        app:layout_constraintTop_toBottomOf="@+id/botaoMultiplica" />
+
+    <Button
+        android:id="@+id/botaoLimpar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="26dp"
+        android:onClick="limpar"
+        android:text="c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao1" />
+
+    <Button
+        android:id="@+id/botaoIgual"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="26dp"
+        android:onClick="clicar"
+        android:text="="
+        app:layout_constraintStart_toEndOf="@+id/botaoPonto"
+        app:layout_constraintTop_toBottomOf="@+id/botao3" />
+
+    <Button
+        android:id="@+id/botaoPonto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="26dp"
+        android:onClick="clicar"
+        android:text="."
+        app:layout_constraintStart_toEndOf="@+id/botaoLimpar"
+        app:layout_constraintTop_toBottomOf="@+id/botao2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:onClick="limpaUltimo"
+        android:text="&lt;--"
+        app:layout_constraintTop_toBottomOf="@+id/botaoDivisao"
+        tools:layout_editor_absoluteX="314dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
