@@ -1,12 +1,13 @@
 package up.edu.br.contatocomsqlite.model;
 
 import android.content.ContentValues;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.Date;
 
 public class ContatoDao {
-    public  void salvar(Contato contato) {
+    public  boolean salvar(Contato contato) {
         ContentValues values = new ContentValues();
         values.put("data_cadastro", new Date().toString());
         values.put("nome", contato.getNome());
@@ -19,7 +20,13 @@ public class ContatoDao {
         values.put("email", contato.getEmail());
 
         SQLiteDatabase conn = Conexao.getConexao();
-        conn.insert("contato", null, values);
+        try {
+            conn.insertOrThrow("contato", null, values);
+            return true;
+        } catch (SQLiteConstraintException e) {
+            return false;
+        }
+
     }
 
 }

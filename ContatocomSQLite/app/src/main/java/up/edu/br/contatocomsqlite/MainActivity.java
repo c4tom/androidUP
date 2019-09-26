@@ -44,9 +44,12 @@ public class MainActivity extends AppCompatActivity {
         contato.setEmail(txtEmail.getText().toString());
 
         // Salva no BD
-        new ContatoDao().salvar(contato);
+        if(new ContatoDao().salvar(contato)) {
+            // Mensagem global após salvar no banco
+            Toast.makeText(getApplicationContext(), "Contato Salvo com Sucesso!!!", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "DEU PAU", Toast.LENGTH_LONG).show();
+        }
 
-        // Mensagem global após salvar no banco
-        Toast.makeText(getApplicationContext(),"Contato Salvo com Sucesso!!!", Toast.LENGTH_LONG).show();
     }
 }

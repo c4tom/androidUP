@@ -22,7 +22,7 @@ public class Conexao extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CONTATO (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "NOME VARCHAR(80) NOT NULL, " +
+                "NOME VARCHAR(80) NOT NULL UNIQUE, " +
                 "ENDERECO VARCHAR(120), " +
                 "CPF VARCHAR(15), " +
                 "DATA_NASCIMENTO TIMESTAMP, " +
